@@ -516,7 +516,7 @@ class FireTV:
             return None
         if int(episode_number) >= 2:
             self.down()
-            for x in xrange(2,int(season_number)):
+            for x in xrange(2,int(episode_number)):
                 self.right()
             self.enter()
             self.media_play_pause()
