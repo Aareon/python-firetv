@@ -9,6 +9,7 @@ ADB Debugging must be enabled.
 import errno
 import logging
 import re
+import time
 from socket import error as socket_error
 from adb import adb_commands
 from adb.adb_protocol import InvalidChecksumError
@@ -470,8 +471,10 @@ class FireTV:
         self.launch_app(app)
         self.right()
         self.enter()
+        time.sleep(2)
         self._input("text " + show)
         self.media_play_pause()
+        time.sleep(2)
         self.up()
         self.up()
         self.up()
