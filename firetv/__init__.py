@@ -486,9 +486,9 @@ class FireTV:
         # Here is where the seasons & shit show
         time.sleep(2)
         self.right()
+        self.enter()
         self.down()
         self.right()
-        self.enter()
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Season_Would_You_Like? -n com.rja.utility/.ShowToast')
 
 
