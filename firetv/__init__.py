@@ -414,29 +414,29 @@ class FireTV:
         set_selection("Sports")
 
     def reset_menu_bar(self, previous_selection):
-        if previous_selection == "All"
+        if previous_selection == 'All'
             return None
-        if previous_selection == "Sports"
+        if previous_selection == 'Sports'
             up(self)
-        if previous_selection == "USA"
-            up(self)
-            up(self)
-        if previous_selection == "Ireland"
+        if previous_selection == 'USA'
             up(self)
             up(self)
-            up(self)
-        if previous_selection == "UK"
+        if previous_selection == 'Ireland'
             up(self)
             up(self)
             up(self)
-            up(self)
-        if previous_selection == "Movies"
+        if previous_selection == 'UK'
             up(self)
             up(self)
             up(self)
             up(self)
+        if previous_selection == 'Movies'
             up(self)
-        if previous_selection == "Live"
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+        if previous_selection == 'Live'
             up(self)
             up(self)
             up(self)
