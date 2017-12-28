@@ -398,21 +398,37 @@ class FireTV:
         self.turn_on()
         self.launch_app(app)
         self.open_epg()
+        self.reset_menu_bar()
         self.open_sports()
         self.down()
         self.enter()
 
+    def bbcone(self, app):
+        self.turn_on()
+        self.launch_app(app)
+        self.open_epg()
+        self.reset_menu_bar()
+        self.open_uk()
+        self.enter()
 
     def open_epg(self):
         self.enter()
         self.left()
 
     def open_sports(self):
-        self.reset_menu_bar()
         self.down()
         self.enter()
         global previous_selection
         previous_selection = "Sports"
+
+    def open_uk(self):
+        self.down()
+        self.down()
+        self.down()
+        self.down()
+        self.enter()
+        global previous_selection
+        previous_selection = "UK"
         
 
     def reset_menu_bar(self):
@@ -445,6 +461,38 @@ class FireTV:
             self.up()
             self.up()
             self.up()
+
+    def set_selection(self, selection):
+        global previous_selection
+        previous_selection = selection
+
+    def play_show(self, app, show):
+        self.launch_app(app)
+        self.right()
+        self.enter()
+        self._input("text " + show)
+        self.media_play_pause()
+        self.up()
+        self.up()
+        self.up()
+        self.up()
+        self.up()
+        self.up()
+        self.down()
+        self.enter()
+        self.right()
+        self.right()
+        self.down()
+        self.enter()
+        self.down()
+        self.left()
+        self.media_play_pause()
+        time.sleep(10)
+        self.down()
+        self.enter()
+
+
+
 
     @property
     def current_app(self):
