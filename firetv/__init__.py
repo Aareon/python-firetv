@@ -414,29 +414,29 @@ class FireTV:
         self.set_selection("Sports")
 
     def reset_menu_bar(self):
-        if self.previous_selection == 'All':
+        if previous_selection == 'All':
             return None
-        if self.previous_selection == 'Sports':
+        if previous_selection == 'Sports':
             up()
-        if self.previous_selection == 'USA':
+        if previous_selection == 'USA':
             self.up()
             self.up()
-        if self.previous_selection == 'Ireland':
-            self.up()
-            self.up()
-            self.up()
-        if self.previous_selection == 'UK':
+        if previous_selection == 'Ireland':
             self.up()
             self.up()
             self.up()
-            self.up()
-        if self.previous_selection == 'Movies':
+        if previous_selection == 'UK':
             self.up()
             self.up()
             self.up()
             self.up()
+        if previous_selection == 'Movies':
             self.up()
-        if self.previous_selection == 'Live':
+            self.up()
+            self.up()
+            self.up()
+            self.up()
+        if previous_selection == 'Live':
             self.up()
             self.up()
             self.up()
@@ -445,7 +445,8 @@ class FireTV:
             self.up()
         
     def set_selection(selected):
-        self.SELECTION = selected
+        global previous_selection
+        previous_selection = selected
 
     @property
     def current_app(self):
