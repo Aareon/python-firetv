@@ -258,6 +258,16 @@ def app_selectseason(device_id, app_id, season_number):
     success = devices[device_id].select_season_number(season_number)
     return jsonify(success=success)
 
+@app.route('/devices/<device_id>/apps/<app_id>/selectepisode/<episode_number>', methods=['GET'])
+def app_selectepisode(device_id, app_id, episode_number):
+    if not is_valid_device_id(device_id):
+        abort(403)
+    if device_id not in devices:
+        abort(404)
+
+    success = devices[device_id].select_episode_number(episode_number)
+    return jsonify(success=success)
+
 
 @app.route('/devices/connect/<device_id>', methods=['GET'])
 def device_connect(device_id):
