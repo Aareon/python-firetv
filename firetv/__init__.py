@@ -419,7 +419,7 @@ class FireTV:
         if previous_selection == 'All':
             return None
         if previous_selection == 'Sports':
-            up()
+            self.up()
         if previous_selection == 'USA':
             self.up()
             self.up()
