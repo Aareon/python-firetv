@@ -506,7 +506,7 @@ class FireTV:
         if int(season_number) > 8:
             self.down()
             for x in xrange(8,int(season_number)):
-                self.right
+                self.right()
             self.enter()   
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Episode_Would_You_Like? -n com.rja.utility/.ShowToast')     
 
