@@ -493,19 +493,19 @@ class FireTV:
 
 
     def select_season_number(self, season_number):
-        if season_number == 1:
+        if int(season_number) == 1:
             self.enter()
             return None
-        if season_number >= 2 and season_number <= 6:
-            for x in xrange(1,season_number):
+        if int(season_number) >= 2 and int(season_number) <= 6:
+            for x in xrange(1,int(season_number)):
                 self.right()
             self.enter()
-        if season_number == 7:
+        if int(season_number) == 7:
             self.down()
             self.enter()
-        if season_number > 7:
+        if int(season_number) > 7:
             self.down()
-            for x in xrange(7,season_number):
+            for x in xrange(7,int(season_number)):
                 self.right
             self.enter()   
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Episode_Would_You_Like? -n com.rja.utility/.ShowToast')     
