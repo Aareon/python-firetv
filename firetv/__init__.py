@@ -411,7 +411,9 @@ class FireTV:
         self.reset_menu_bar()
         self.down()
         self.enter()
-        self.set_selection("Sports")
+        global previous_selection
+        previous_selection = "Sports"
+        
 
     def reset_menu_bar(self):
         if previous_selection == 'All':
@@ -443,10 +445,6 @@ class FireTV:
             self.up()
             self.up()
             self.up()
-        
-    def set_selection(selected):
-        global previous_selection
-        previous_selection = selected
 
     @property
     def current_app(self):
