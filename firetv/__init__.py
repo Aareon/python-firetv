@@ -396,53 +396,53 @@ class FireTV:
 
     def skysportsmainevent(self, app):
         self.turn_on()
-        self.launch_app(self, app)
-        self.open_epg(self)
-        self.open_sports(self, previous_selection)
-        self.down(self)
-        self.enter(self)
+        self.launch_app(app)
+        self.open_epg()
+        self.open_sports(previous_selection)
+        self.down()
+        self.enter()
 
 
     def open_epg(self):
-        self.enter(self)
-        self.left(self)
+        self.enter()
+        self.left()
 
-    def open_sports(self, previous_selection):
-        self.reset_menu_bar(self, previous_selection)
-        self.down(self)
-        self.enter(self)
+    def open_sports(previous_selection):
+        self.reset_menu_bar(previous_selection)
+        self.down()
+        self.enter()
         self.set_selection("Sports")
 
     def reset_menu_bar(self, previous_selection):
         if self.previous_selection == 'All':
             return None
         if self.previous_selection == 'Sports':
-            up(self)
+            up()
         if self.previous_selection == 'USA':
-            self.up(self)
-            self.up(self)
+            self.up()
+            self.up()
         if self.previous_selection == 'Ireland':
-            self.up(self)
-            self.up(self)
-            self.up(self)
+            self.up()
+            self.up()
+            self.up()
         if self.previous_selection == 'UK':
-            self.up(self)
-            self.up(self)
-            self.up(self)
-            self.up(self)
+            self.up()
+            self.up()
+            self.up()
+            self.up()
         if self.previous_selection == 'Movies':
-            self.up(self)
-            self.up(self)
-            self.up(self)
-            self.up(self)
-            self.up(self)
+            self.up()
+            self.up()
+            self.up()
+            self.up()
+            self.up()
         if self.previous_selection == 'Live':
-            self.up(self)
-            self.up(self)
-            self.up(self)
-            self.up(self)
-            self.up(self)
-            self.up(self)
+            self.up()
+            self.up()
+            self.up()
+            self.up()
+            self.up()
+            self.up()
         
     def set_selection(selected):
         self.SELECTION = selected
