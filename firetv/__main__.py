@@ -239,7 +239,7 @@ def app_set_selection(device_id, app_id, selection):
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/playshow/<show>', methods=['GET'])
-def app_playshow(device_id, app_id, selection):
+def app_playshow(device_id, app_id, show):
     if not is_valid_device_id(device_id):
         abort(403)
     if device_id not in devices:
