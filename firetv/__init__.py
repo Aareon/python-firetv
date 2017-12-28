@@ -398,7 +398,7 @@ class FireTV:
         self.turn_on()
         self.launch_app(app)
         self.open_epg()
-        self.open_sports(previous_selection)
+        self.open_sports()
         self.down()
         self.enter()
 
@@ -407,13 +407,13 @@ class FireTV:
         self.enter()
         self.left()
 
-    def open_sports(previous_selection):
-        self.reset_menu_bar(previous_selection)
+    def open_sports(self):
+        self.reset_menu_bar()
         self.down()
         self.enter()
         self.set_selection("Sports")
 
-    def reset_menu_bar(self, previous_selection):
+    def reset_menu_bar(self):
         if self.previous_selection == 'All':
             return None
         if self.previous_selection == 'Sports':
