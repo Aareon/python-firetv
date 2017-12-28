@@ -255,7 +255,7 @@ def app_selectseason(device_id, app_id, season_number):
     if device_id not in devices:
         abort(404)
 
-    success = devices[device_id].select_season_number(app_id, season_number)
+    success = devices[device_id].select_season_number(season_number)
     return jsonify(success=success)
 
 
