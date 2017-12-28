@@ -238,14 +238,24 @@ def app_set_selection(device_id, app_id, selection):
     success = devices[device_id].set_selection(selection)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/playshow/<show>', methods=['GET'])
+@app.route('/devices/<device_id>/apps/<app_id>/displayseasons/<show>', methods=['GET'])
 def app_playshow(device_id, app_id, show):
     if not is_valid_device_id(device_id):
         abort(403)
     if device_id not in devices:
         abort(404)
 
-    success = devices[device_id].play_show(app_id, show)
+    success = devices[device_id].display_show_seasons(app_id, show)
+    return jsonify(success=success)
+
+@app.route('/devices/<device_id>/apps/<app_id>/selectseason/<season_number>', methods=['GET'])
+def app_playshow(device_id, app_id, season_number):
+    if not is_valid_device_id(device_id):
+        abort(403)
+    if device_id not in devices:
+        abort(404)
+
+    success = devices[device_id].selectseason(app_id, season_number)
     return jsonify(success=success)
 
 

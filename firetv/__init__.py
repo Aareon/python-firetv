@@ -467,7 +467,7 @@ class FireTV:
         global previous_selection
         previous_selection = selection
 
-    def play_show(self, app, show):
+    def display_show_seasons(self, app, show):
         self.launch_app(app)
         self.right()
         self.enter()
@@ -483,17 +483,32 @@ class FireTV:
         self.up()
         self.down()
         self.enter()
+        # Here is where the seasons & shit show
+        time.sleep(2)
         self.right()
+        self.down()
         self.right()
-        self.down()
         self.enter()
-        self.down()
-        self.left()
-        self.media_play_pause()
-        time.sleep(10)
-        self.down()
-        self.enter()
+        self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Season_Would_You_Like? -n com.rja.utility/.ShowToast')
 
+
+    def select_season_number(self, season_number):
+        if season_number == 1:
+            self.enter()
+            return None
+        if season_number >= 2 && season_number <= 6:
+            for x in xrange(1,season_number):
+                self.right()
+            self.enter()
+        if season_number = 7:
+            self.down()
+            self.enter()
+        if season_number > 7:
+            self.down()
+            for x in xrange(7,season_number):
+                self.right
+            self.enter()   
+        self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Episode_Would_You_Like? -n com.rja.utility/.ShowToast')     
 
 
 
