@@ -216,7 +216,7 @@ def app_skysportsmainevent(device_id, app_id):
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/bbcone', methods=['GET'])
-def app_skysportsmainevent(device_id, app_id):
+def app_bbcone(device_id, app_id):
     """ stops an app with corresponding package name"""
     if not is_valid_app_id(app_id):
         abort(403)
@@ -239,7 +239,7 @@ def app_set_selection(device_id, app_id, selection):
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/playshow/<show>', methods=['GET'])
-def app_skysportsmainevent(device_id, app_id, selection):
+def app_playshow(device_id, app_id, selection):
     if not is_valid_device_id(device_id):
         abort(403)
     if device_id not in devices:
