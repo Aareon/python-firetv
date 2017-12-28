@@ -520,7 +520,7 @@ class FireTV:
                 self.right()
             self.enter()
             self.media_play_pause()
-            time.sleep(10)
+            time.sleep(20)
             self.down()
             self.enter()
 
