@@ -394,7 +394,7 @@ class FireTV:
 
         return self._send_intent(PACKAGE_LAUNCHER, INTENT_HOME)
 
-    def skysportsmainevent(self, app, previous_selection):
+    def skysportsmainevent(self, app):
         turn_on(self)
         launch_app(self, app)
         open_epg(self)
