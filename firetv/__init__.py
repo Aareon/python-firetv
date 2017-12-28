@@ -496,8 +496,8 @@ class FireTV:
         if int(season_number) == 1:
             self.enter()
             return None
-        if int(season_number) >= 2 and int(season_number) <= 6:
-            for x in xrange(1,int(season_number)):
+        if int(season_number) >= 2 and int(season_number) <= 7:
+            for x in xrange(2,int(season_number)):
                 self.right()
             self.enter()
         if int(season_number) == 8:
@@ -505,12 +505,24 @@ class FireTV:
             self.enter()
         if int(season_number) > 8:
             self.down()
-            for x in xrange(7,int(season_number)):
+            for x in xrange(8,int(season_number)):
                 self.right
             self.enter()   
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Episode_Would_You_Like? -n com.rja.utility/.ShowToast')     
 
-
+    def select_episode_number(self, episode_number):
+        if int(episode_number) == 1:
+            self.media_play_pause()
+            return None
+        if int(episode_number) >= 2:
+            self.down()
+            for x in xrange(2,int(season_number)):
+                self.right()
+            self.enter()
+            self.media_play_pause()
+            time.sleep(10)
+            self.down()
+            self.enter()
 
     @property
     def current_app(self):
