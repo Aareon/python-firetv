@@ -500,7 +500,7 @@ class FireTV:
             for x in xrange(1,season_number):
                 self.right()
             self.enter()
-        if season_number = 7:
+        if season_number == 7:
             self.down()
             self.enter()
         if season_number > 7:
