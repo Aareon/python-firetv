@@ -85,6 +85,9 @@ PACKAGE_SETTINGS = "com.amazon.tv.settings"
 INTENT_LAUNCH = "android.intent.category.LAUNCHER"
 INTENT_HOME = "android.intent.category.HOME"
 
+SELECTION = "All"
+previous_selection = "All"
+
 
 class FireTV:
     """ Represents an Amazon Fire TV device. """
@@ -390,6 +393,59 @@ class FireTV:
             return None
 
         return self._send_intent(PACKAGE_LAUNCHER, INTENT_HOME)
+
+    def skysportsmainevent(self, app, previous_selection):
+        turn_on(self)
+        launch_app(self, app)
+        open_epg(self)
+        open_sports(self, previous_selection)
+        down(self)
+        enter(self)
+
+
+    def open_epg(self):
+        enter(self)
+        left(self)
+
+    def open_sports(self, previous_selection):
+        reset_menu_bar(self, previous_selection)
+        down(self)
+        enter(self)
+        set_selection("Sports")
+
+    def reset_menu_bar(self, previous_selection):
+        if previous_selection == "All"
+            return None
+        if previous_selection == "Sports"
+            up(self)
+        if previous_selection == "USA"
+            up(self)
+            up(self)
+        if previous_selection == "Ireland"
+            up(self)
+            up(self)
+            up(self)
+        if previous_selection == "UK"
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+        if previous_selection == "Movies"
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+        if previous_selection == "Live"
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+            up(self)
+        
+    def set_selection(selected):
+        SELECTION = selected
 
     @property
     def current_app(self):
