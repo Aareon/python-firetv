@@ -263,7 +263,7 @@ def app_displayseasons(device_id, app_id):
     logging.error("Here is the output of request.get_json '%s'", request.get_json())
     logging.error("Here is the output of request '%s'", request)
     if 'show' in req:
-        channel = req['show']
+        show = req['show']
         devices[device_id].display_show_seasons(app_id, show)
     return jsonify(success=success)
 
