@@ -447,7 +447,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,9):
+        for x in xrange(1,10):
             self.down()   
         self.enter()
 
@@ -457,7 +457,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,11):
+        for x in xrange(1,12):
             self.down()   
         self.enter()
 
