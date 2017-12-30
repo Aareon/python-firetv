@@ -264,7 +264,8 @@ def app_displayseasons(device_id, app_id):
     logging.error("Here is the output of request '%s'", request)
     if 'show' in req:
         show = req['show']
-        devices[device_id].display_show_seasons(app_id, show)
+        adb_show = show.replace('of ','')
+        devices[device_id].display_show_seasons(app_id, adb_show)
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/selectseason/<season_number>', methods=['GET'])
