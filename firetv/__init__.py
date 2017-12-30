@@ -395,89 +395,72 @@ class FireTV:
 
         return self._send_intent(PACKAGE_LAUNCHER, INTENT_HOME)
 
-    def skysports(self,app,channel):
+    def uk(self,app,channel):
+        x = 0
+        if "bbc one" in channel:
+            x = 1
+        if "bbc two" in channel:
+            x = 3
+        if "bbc four" in channel:
+            x = 5
+        if "bbc news" in channel:
+            x = 7
+        if "channel four" in channel:
+            x = 9
+        if "channel five" in channel:
+            x = 11
+        if "itv one" in channel:
+            x = 13
+        if "itv two" in channel:
+            x = 15
+        if "itv three" in channel:
+            x = 17
+        if "itv four" in channel:
+            x = 19
+        if "sky one" in channel:
+            x = 23
+        if "sky two" in channel:
+            x = 24
+        if "sky atlantic" in channel:
+            x = 26
+        if "sky living" in channel:
+            x = 27
+
+
+    def sports(self,app,channel):
+        x = 0
         if "main event" in channel:
-            self.skysportsmainevent(app)
+            x = 2
         if "action" in channel:
-            self.skysportsaction(app)
+            x = 6
         if "golf" in channel:
-            self.skysportsgolf(app)
+            x = 8
         if "premier league" in channel:
-            self.skysportspremierleague(app)
+            x = 10
         if "formula 1" in channel:
-            self.skysportsf1(app)
+            x = 12
         if "football" in channel:
-            self.skysportsfootball(app)
-
-
-    def skysportsmainevent(self, app):
-        self.turn_on()
-        self.launch_app(app)
-        self.open_epg()
-        self.reset_menu_bar()
+            x = 16
+        if "bt sport one" in channel:
+            x = 22
+        if "bt sport two" in channel:
+            x = 24
+        if "bt sport three" in channel:
+            x = 26
+        self.reset()
         self.open_sports()
-        for x in xrange(1,2):
-            self.down()        
+        self.move_down(self, x)
         self.enter()
 
-    def skysportsaction(self, app):
+    def move_down(self, x):
+        for x in xrange(1, int(x)):
+            self.down()
+
+    def reset(self):
         self.turn_on()
         self.launch_app(app)
         self.open_epg()
         self.reset_menu_bar()
-        self.open_sports()
-        for x in xrange(1,6):
-            self.down()   
-        self.enter()
-
-    def skysportsgolf(self, app):
-        self.turn_on()
-        self.launch_app(app)
-        self.open_epg()
-        self.reset_menu_bar()
-        self.open_sports()
-        for x in xrange(1,7):
-            self.down()   
-        self.enter()
-
-
-    def skysportspremierleague(self, app):
-        self.turn_on()
-        self.launch_app(app)
-        self.open_epg()
-        self.reset_menu_bar()
-        self.open_sports()
-        for x in xrange(1,10):
-            self.down()   
-        self.enter()
-
-    def skysportsf1(self, app):
-        self.turn_on()
-        self.launch_app(app)
-        self.open_epg()
-        self.reset_menu_bar()
-        self.open_sports()
-        for x in xrange(1,12):
-            self.down()   
-        self.enter()
-
-    def skysportsfootball(self, app):
-        self.turn_on()
-        self.launch_app(app)
-        self.open_epg()
-        self.reset_menu_bar()
-        self.open_sports()
-        for x in xrange(1,15):
-            self.down()   
-        self.enter()
-
-    def bbcone(self, app):
-        self.turn_on()
-        self.launch_app(app)
-        self.open_epg()
-        self.reset_menu_bar()
-        self.open_uk()
-        self.enter()
 
     def open_epg(self):
         self.enter()

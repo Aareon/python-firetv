@@ -202,7 +202,7 @@ def app_stop(device_id, app_id):
     success = devices[device_id].stop_app(app_id)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/skysports', methods=['POST'])
+@app.route('/devices/<device_id>/apps/<app_id>/sports', methods=['POST'])
 def sportschannel(device_id, app_id):
     """ Add a device via HTTP POST.
 
@@ -220,34 +220,30 @@ def sportschannel(device_id, app_id):
     logging.error("Here is the output of request '%s'", request)
     if 'channel' in req:
         channel = req['channel']
-        devices[device_id].skysports(app_id, channel)
+        devices[device_id].sports(app_id, channel)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/skysports/mainevent', methods=['GET'])
-def app_skysports(device_id, app_id):
-    """ stops an app with corresponding package name"""
-    if not is_valid_app_id(app_id):
-        abort(403)
-    if not is_valid_device_id(device_id):
-        abort(403)
-    if device_id not in devices:
-        abort(404)
+@app.route('/devices/<device_id>/apps/<app_id>/uk', methods=['POST'])
+def ukchannel(device_id, app_id):
+    """ Add a device via HTTP POST.
 
-    success = devices[device_id].skysportsmainevent(app_id)
+    POST JSON in the following format ::
+
+        {
+            "channel": "<channel>"
+        }
+
+    """
+    req = request.get_json()
+    success = False
+    logging.error("Here is the output of req '%s'", req)
+    logging.error("Here is the output of request.get_json '%s'", request.get_json())
+    logging.error("Here is the output of request '%s'", request)
+    if 'channel' in req:
+        channel = req['channel']
+        devices[device_id].uk(app_id, channel)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/bbcone', methods=['GET'])
-def app_bbcone(device_id, app_id):
-    """ stops an app with corresponding package name"""
-    if not is_valid_app_id(app_id):
-        abort(403)
-    if not is_valid_device_id(device_id):
-        abort(403)
-    if device_id not in devices:
-        abort(404)
-
-    success = devices[device_id].bbcone(app_id)
-    return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/setselection/<selection>', methods=['GET'])
 def app_set_selection(device_id, app_id, selection):
@@ -259,15 +255,28 @@ def app_set_selection(device_id, app_id, selection):
     success = devices[device_id].set_selection(selection)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/displayseasons/<show>', methods=['GET'])
-def app_displayseasons(device_id, app_id, show):
-    if not is_valid_device_id(device_id):
-        abort(403)
-    if device_id not in devices:
-        abort(404)
+@app.route('/devices/<device_id>/apps/<app_id>/displayseasons', methods=['POST'])
+def app_displayseasons(device_id, app_id):
+     """ Add a device via HTTP POST.
 
-    success = devices[device_id].display_show_seasons(app_id, show)
+    POST JSON in the following format ::
+
+        {
+            "show": "<show>"
+        }
+
+    """
+    req = request.get_json()
+    success = True
+    logging.error("Here is the output of req '%s'", req)
+    logging.error("Here is the output of request.get_json '%s'", request.get_json())
+    logging.error("Here is the output of request '%s'", request)
+    if 'show' in req:
+        channel = req['show']
+        devices[device_id].display_show_seasons(app_id, show)
     return jsonify(success=success)
+
+   
 
 @app.route('/devices/<device_id>/apps/<app_id>/selectseason/<season_number>', methods=['GET'])
 def app_selectseason(device_id, app_id, season_number):
