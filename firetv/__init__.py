@@ -522,7 +522,7 @@ class FireTV:
         self.right()
         self.enter()
         time.sleep(5)
-        self._adb.Shell('input' + show)
+        self._adb.Shell("input text $(echo "${show}" | sed -e 's/ /\%s/g')")
         self.media_play_pause()
         time.sleep(2)
         self.up()
