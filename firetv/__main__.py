@@ -215,7 +215,9 @@ def sportschannel(device_id, app_id):
     """
     req = request.get_json()
     success = False
-    logging.error("Here is the output of res '%s'", req)
+    logging.error("Here is the output of req '%s'", req)
+    logging.error("Here is the output of request.get_json '%s'", request.get_json())
+    logging.error("Here is the output of request '%s'", request)
     if 'channel' in req:
         channel = req['channel']
         success = add(req['channel'])
