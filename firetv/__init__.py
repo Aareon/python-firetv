@@ -397,7 +397,7 @@ class FireTV:
 
     def skysports(self,app,channel):
         if "main event" in channel:
-            skysportsmainevent(app)
+            self.skysportsmainevent(app)
 
     def skysportsmainevent(self, app):
         self.turn_on()

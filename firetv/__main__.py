@@ -233,7 +233,7 @@ def app_skysports(device_id, app_id):
     if device_id not in devices:
         abort(404)
 
-    success = devices[device_id].skysportsmainevent(app_id)
+    success = devices[device_id].skysports(app_id)
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/bbcone', methods=['GET'])
