@@ -220,7 +220,6 @@ def sportschannel(device_id, app_id):
     logging.error("Here is the output of request '%s'", request)
     if 'channel' in req:
         channel = req['channel']
-        success = add(req['channel'])
         devices[device_id].skysports(app_id, channel)
     return jsonify(success=success)
 
