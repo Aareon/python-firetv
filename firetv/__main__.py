@@ -257,15 +257,6 @@ def app_set_selection(device_id, app_id, selection):
 
 @app.route('/devices/<device_id>/apps/<app_id>/displayseasons', methods=['POST'])
 def app_displayseasons(device_id, app_id):
-     """ Add a device via HTTP POST.
-
-    POST JSON in the following format ::
-
-        {
-            "show": "<show>"
-        }
-
-    """
     req = request.get_json()
     success = False
     logging.error("Here is the output of req '%s'", req)
@@ -275,8 +266,6 @@ def app_displayseasons(device_id, app_id):
         channel = req['show']
         devices[device_id].display_show_seasons(app_id, show)
     return jsonify(success=success)
-
-   
 
 @app.route('/devices/<device_id>/apps/<app_id>/selectseason/<season_number>', methods=['GET'])
 def app_selectseason(device_id, app_id, season_number):
