@@ -426,7 +426,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,5):
+        for x in xrange(1,6):
             self.down()   
         self.enter()
 
@@ -436,7 +436,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,6):
+        for x in xrange(1,7):
             self.down()   
         self.enter()
 
@@ -447,7 +447,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,8):
+        for x in xrange(1,9):
             self.down()   
         self.enter()
 
@@ -457,7 +457,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,10):
+        for x in xrange(1,11):
             self.down()   
         self.enter()
 
@@ -467,7 +467,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,14):
+        for x in xrange(1,15):
             self.down()   
         self.enter()
 
