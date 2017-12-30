@@ -202,8 +202,26 @@ def app_stop(device_id, app_id):
     success = devices[device_id].stop_app(app_id)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/skysportsmainevent', methods=['GET'])
-def app_skysportsmainevent(device_id, app_id):
+@app.route('/devices/<device_id>/apps/<app_id>/skysports', methods=['POST'])
+def sportschannel():
+    """ Add a device via HTTP POST.
+
+    POST JSON in the following format ::
+
+        {
+            "channel": "<channel>"
+        }
+
+    """
+    req = request.get_json()
+    success = False
+    if 'channel' in req:
+        channel = req['channel']
+        devices[device_id].skysports(app_id, channel)
+    return jsonify(success=success)
+
+@app.route('/devices/<device_id>/apps/<app_id>/skysports/mainevent', methods=['GET'])
+def app_skysports(device_id, app_id):
     """ stops an app with corresponding package name"""
     if not is_valid_app_id(app_id):
         abort(403)
