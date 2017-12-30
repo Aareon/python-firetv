@@ -203,7 +203,7 @@ def app_stop(device_id, app_id):
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/skysports', methods=['POST'])
-def sportschannel():
+def sportschannel(device_id, app_id)):
     """ Add a device via HTTP POST.
 
     POST JSON in the following format ::
