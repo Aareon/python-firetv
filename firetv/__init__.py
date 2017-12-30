@@ -525,7 +525,8 @@ class FireTV:
         logging.error("AHHHHHH '%s'", show.split(None, 1)[0])
         self._adb.Shell('input text {0}'.format(show.split(None, 1)[0]))
         self._adb.Shell('input keyevent 62')
-        self._adb.Shell('input text {0}'.format(show.split(None, 1)[1]))
+        if not show.split(None, 1)[1]:
+            self._adb.Shell('input text {0}'.format(show.split(None, 1)[1]))
         time.sleep(5)
         self.media_play_pause()
         time.sleep(2)
