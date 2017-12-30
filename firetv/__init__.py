@@ -398,6 +398,17 @@ class FireTV:
     def skysports(self,app,channel):
         if "main event" in channel:
             self.skysportsmainevent(app)
+        if "action" in channel:
+            self.skysportsaction(app)
+        if "golf" in channel:
+            self.skysportsgolf(app)
+        if "premier league" in channel:
+            self.skysportspremierleague(app)
+        if "formula 1" in channel:
+            self.skysportsf1(app)
+        if "football" in channel:
+            self.skysportsfootball(app)
+
 
     def skysportsmainevent(self, app):
         self.turn_on()
@@ -405,7 +416,7 @@ class FireTV:
         self.open_epg()
         self.reset_menu_bar()
         self.open_sports()
-        for x in xrange(1,1):
+        for x in xrange(1,2):
             self.down()        
         self.enter()
 
