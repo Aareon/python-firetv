@@ -523,6 +523,7 @@ class FireTV:
         self.enter()
         time.sleep(5)
         adb_show = show.replace(" ","%")
+        logging.error("AHHHHHHH '%s'", adb_show)
         self._adb.Shell("input text" + adb_show)
         self.media_play_pause()
         time.sleep(2)
