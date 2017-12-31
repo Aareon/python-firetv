@@ -449,7 +449,7 @@ class FireTV:
             x = 26
         self.reset(app)
         self.open_sports()
-        self.move_down(self, x)
+        self.move_down(x)
         self.enter()
 
     def move_down(self, x):
@@ -458,7 +458,9 @@ class FireTV:
 
     def reset(self, app):
         self.turn_on()
-        self.launch_app(app)
+        current_state = self.app_state(app)
+        if not current_state == "STATE_ON" 
+            self.launch_app(app)
         self.open_epg()
         self.reset_menu_bar()
 
