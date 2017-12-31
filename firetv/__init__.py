@@ -536,6 +536,18 @@ class FireTV:
         global previous_selection
         previous_selection = selection
 
+    def actions(action):
+        if "pause" in action:
+            self.media_play_pause()
+        if "play" in action:
+            self.media_play_pause()
+        if "rewind" in action:
+            self.media_previous()
+        if "stop" in action:
+            self.media_pause()
+        if "fast forward" in action:
+            self.media_next()
+
     def display_show_seasons(self, app, show):
         self.turn_on()
         current_state = self.app_state(app)
