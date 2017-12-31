@@ -571,6 +571,7 @@ class FireTV:
         #time.sleep(2)
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
         show_split = show.split()
+        time.sleep(2)
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
             self._adb.Shell('input text {0}'.format(x))
