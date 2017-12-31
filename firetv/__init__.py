@@ -542,7 +542,7 @@ class FireTV:
         time,sleep(10)
         self.right()
         self.enter()
-        time,sleep(10)
+        time.sleep(10)
         show_split = show.split()
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
@@ -569,7 +569,7 @@ class FireTV:
     def play_movie(self, app, show):
         self.turn_on()
         self._adb.Shell('am start -n com.nitroxenon.terrarium.ui.activity.HomeActivity')
-        time,sleep(10)
+        time.sleep(10)
         self.right()
         self.enter()
         time.sleep(10)
