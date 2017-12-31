@@ -538,6 +538,10 @@ class FireTV:
 
     def display_show_seasons(self, app, show):
         self.turn_on()
+        current_state = self.app_state(app)
+        if not current_state == "STATE_ON":
+            self.launch_app(app)
+            time.sleep(30)
         self._adb.Shell('am start -n com.nitroxenon.terrarium.ui.activity.HomeActivity')
         time,sleep(10)
         self.right()
