@@ -536,7 +536,7 @@ class FireTV:
         global previous_selection
         previous_selection = selection
 
-    def actions(action):
+    def actions(self, action):
         if "pause" in action:
             self.media_play_pause()
         if "play" in action:
