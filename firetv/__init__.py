@@ -397,29 +397,29 @@ class FireTV:
 
     def uk(self,app,channel):
         x = 0
-        if "bbc one" in channel:
+        if "bbc 1" in channel:
             x = 1
-        if "bbc two" in channel:
+        if "bbc 2" in channel:
             x = 3
-        if "bbc four" in channel:
+        if "bbc 4" in channel:
             x = 5
         if "bbc news" in channel:
             x = 7
-        if "channel four" in channel:
+        if "channel 4" in channel:
             x = 9
-        if "channel five" in channel:
+        if "channel 5" in channel:
             x = 11
-        if "itv one" in channel:
+        if "itv 1" in channel:
             x = 13
-        if "itv two" in channel:
+        if "itv 2" in channel:
             x = 15
-        if "itv three" in channel:
+        if "itv 3" in channel:
             x = 17
-        if "itv four" in channel:
+        if "itv 4" in channel:
             x = 19
-        if "sky one" in channel:
+        if "sky 1" in channel:
             x = 23
-        if "sky two" in channel:
+        if "sky 2" in channel:
             x = 24
         if "sky atlantic" in channel:
             x = 26
@@ -441,13 +441,13 @@ class FireTV:
             x = 12
         if "football" in channel:
             x = 16
-        if "bt sport one" in channel:
+        if "1" in channel:
             x = 22
-        if "bt sport two" in channel:
+        if "2" in channel:
             x = 24
-        if "bt sport three" in channel:
+        if "3" in channel:
             x = 26
-        self.reset()
+        self.reset(app)
         self.open_sports()
         self.move_down(self, x)
         self.enter()
@@ -456,7 +456,7 @@ class FireTV:
         for x in xrange(1, int(x)):
             self.down()
 
-    def reset(self):
+    def reset(self, app):
         self.turn_on()
         self.launch_app(app)
         self.open_epg()
