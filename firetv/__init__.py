@@ -542,8 +542,8 @@ class FireTV:
         if not current_state == "STATE_ON":
             self.launch_app(app)
             time.sleep(30)
-        self._adb.Shell('am start -n com.nitroxenon.terrarium.ui.activity.HomeActivity')
-        time,sleep(10)
+        self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.HomeActivity')
+        time.sleep(10)
         self.right()
         self.enter()
         time.sleep(10)
@@ -576,7 +576,7 @@ class FireTV:
         if not current_state == "STATE_ON":
             self.launch_app(app)
             time.sleep(30)
-        self._adb.Shell('am start -n com.nitroxenon.terrarium.ui.activity.HomeActivity')
+        self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.HomeActivity')
         time.sleep(10)
         self.right()
         self.enter()
