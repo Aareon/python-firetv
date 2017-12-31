@@ -203,7 +203,7 @@ def app_stop(device_id, app_id):
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/channel', methods=['POST'])
-def sportschannel(device_id, app_id):
+def channel(device_id, app_id):
     """ Add a device via HTTP POST.
 
     POST JSON in the following format ::
@@ -224,7 +224,7 @@ def sportschannel(device_id, app_id):
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/context', methods=['POST'])
-def sportschannel(device_id, app_id):
+def context(device_id, app_id):
     """ Add a device via HTTP POST.
 
     POST JSON in the following format ::
