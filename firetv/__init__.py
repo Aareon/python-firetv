@@ -395,35 +395,51 @@ class FireTV:
 
         return self._send_intent(PACKAGE_LAUNCHER, INTENT_HOME)
 
+    def change_channel(self, app, channel):
+        if "sports" in channel:
+            self.sports(app,channel)
+        elif "rte" in channel:
+            self.ireland(app, channel)
+        elif "movies" in channel:
+            self.movies(app, channel)
+        else:
+            self.uk(app, channel)
+
+    def ireland(self, app, channel):
+        return None
+
+    def movies(self, app, channel):
+        return None
+
     def uk(self,app,channel):
         x = 0
         if "bbc 1" in channel:
             x = 1
-        if "bbc 2" in channel:
+        elif "bbc 2" in channel:
             x = 3
-        if "bbc 4" in channel:
+        elif "bbc 4" in channel:
             x = 5
-        if "bbc news" in channel:
+        elif "bbc news" in channel:
             x = 7
-        if "channel 4" in channel:
+        elif "channel 4" in channel:
             x = 9
-        if "channel 5" in channel:
+        elif "channel 5" in channel:
             x = 11
-        if "itv 1" in channel:
+        elif "itv 1" in channel:
             x = 13
-        if "itv 2" in channel:
+        elif "itv 2" in channel:
             x = 15
-        if "itv 3" in channel:
+        elif "itv 3" in channel:
             x = 17
-        if "itv 4" in channel:
+        elif "itv 4" in channel:
             x = 19
-        if "sky 1" in channel:
+        elif "sky 1" in channel:
             x = 23
-        if "sky 2" in channel:
+        elif "sky 2" in channel:
             x = 24
-        if "sky atlantic" in channel:
+        elif "sky atlantic" in channel:
             x = 26
-        if "sky living" in channel:
+        elif "sky living" in channel:
             x = 27
 
 
@@ -431,21 +447,21 @@ class FireTV:
         x = 0
         if "main event" in channel:
             x = 2
-        if "action" in channel:
+        elif "action" in channel:
             x = 6
-        if "golf" in channel:
+        elif "golf" in channel:
             x = 8
-        if "premier league" in channel:
+        elif "premier league" in channel:
             x = 10
-        if "formula 1" in channel:
+        elif "formula 1" in channel:
             x = 12
-        if "football" in channel:
+        elif "football" in channel:
             x = 16
-        if "1" in channel:
+        elif "1" in channel:
             x = 22
-        if "2" in channel:
+        elif "2" in channel:
             x = 24
-        if "3" in channel:
+        elif "3" in channel:
             x = 26
         self.reset(app)
         self.open_sports()
@@ -521,15 +537,15 @@ class FireTV:
 
     def display_show_seasons(self, app, show):
         self.launch_app(app)
-        self.right()
-        self.enter()
-        time.sleep(2)
+        #self.right()
+        #self.enter()
+        #time.sleep(2)
+        self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
         show_split = show.split()
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
             self._adb.Shell('input text {0}'.format(x))
             self._adb.Shell('input keyevent 62')
-        time.sleep(2)
         self.media_play_pause()
         time.sleep(2)
         self.up()
@@ -548,6 +564,38 @@ class FireTV:
         self.right()
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Season_Would_You_Like? -n com.rja.utility/.ShowToast')
 
+        def play_movie(self, app, show):
+        self.launch_app(app)
+        #self.right()
+        #self.enter()
+        #time.sleep(2)
+        self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
+        show_split = show.split()
+        for x in show_split:
+            logging.error("AHHHHHH '%s'", x)
+            self._adb.Shell('input text {0}'.format(x))
+            self._adb.Shell('input keyevent 62')
+        self.media_play_pause()
+        time.sleep(2)
+        self.up()
+        self.up()
+        self.up()
+        self.up()
+        self.up()
+        self.up()
+        self.right()
+        self.right()
+        self.enter()
+        self.left()
+        self.left()
+        self.down()
+        self.enter()
+        self.media_play_pause()
+        time.sleep(20)
+        self.down()
+        self.enter()
+
+        
 
     def select_season_number(self, season_number):
         if int(season_number) == 1:

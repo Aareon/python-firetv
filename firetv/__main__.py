@@ -202,7 +202,7 @@ def app_stop(device_id, app_id):
     success = devices[device_id].stop_app(app_id)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/sports', methods=['POST'])
+@app.route('/devices/<device_id>/apps/<app_id>/channel', methods=['POST'])
 def sportschannel(device_id, app_id):
     """ Add a device via HTTP POST.
 
@@ -220,17 +220,17 @@ def sportschannel(device_id, app_id):
     logging.error("Here is the output of request '%s'", request)
     if 'channel' in req:
         channel = req['channel']
-        devices[device_id].sports(app_id, channel)
+        devices[device_id].change_channel(app_id, channel)
     return jsonify(success=success)
 
-@app.route('/devices/<device_id>/apps/<app_id>/uk', methods=['POST'])
-def ukchannel(device_id, app_id):
+@app.route('/devices/<device_id>/apps/<app_id>/context', methods=['POST'])
+def sportschannel(device_id, app_id):
     """ Add a device via HTTP POST.
 
     POST JSON in the following format ::
 
         {
-            "channel": "<channel>"
+            "context": "<context>"
         }
 
     """
@@ -239,23 +239,14 @@ def ukchannel(device_id, app_id):
     logging.error("Here is the output of req '%s'", req)
     logging.error("Here is the output of request.get_json '%s'", request.get_json())
     logging.error("Here is the output of request '%s'", request)
-    if 'channel' in req:
-        channel = req['channel']
-        devices[device_id].uk(app_id, channel)
+    if 'context' in req:
+        context = req['context']
+        devices[device_id].set_selection(context)
     return jsonify(success=success)
 
 
-@app.route('/devices/<device_id>/apps/<app_id>/setselection/<selection>', methods=['GET'])
-def app_set_selection(device_id, app_id, selection):
-    if not is_valid_device_id(device_id):
-        abort(403)
-    if device_id not in devices:
-        abort(404)
 
-    success = devices[device_id].set_selection(selection)
-    return jsonify(success=success)
-
-@app.route('/devices/<device_id>/apps/<app_id>/displayseasons', methods=['POST'])
+@app.route('/devices/<device_id>/apps/<app_id>/terrarium', methods=['POST'])
 def app_displayseasons(device_id, app_id):
     req = request.get_json()
     success = False
@@ -265,7 +256,11 @@ def app_displayseasons(device_id, app_id):
     if 'show' in req:
         show = req['show']
         adb_show = show.replace('of ','')
-        devices[device_id].display_show_seasons(app_id, adb_show)
+        movie = req['movie']
+        if movie:
+            devices[device_id].play_movie(app_id, adb_show)
+        else:
+            devices[device_id].display_show_seasons(app_id, adb_show)
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/selectseason/<season_number>', methods=['GET'])
