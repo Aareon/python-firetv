@@ -564,7 +564,7 @@ class FireTV:
         self.right()
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Season_Would_You_Like? -n com.rja.utility/.ShowToast')
 
-        def play_movie(self, app, show):
+    def play_movie(self, app, show):
         self.launch_app(app)
         #self.right()
         #self.enter()
