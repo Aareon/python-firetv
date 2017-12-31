@@ -589,6 +589,7 @@ class FireTV:
         self.right()
         self.right()
         self.right()
+        self.right()
         self.enter()
         time.sleep(20)
         self.down()
