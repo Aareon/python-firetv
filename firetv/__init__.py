@@ -538,9 +538,8 @@ class FireTV:
 
     def display_show_seasons(self, app, show):
         self.turn_on()
-        self._adb.Shell('am force-stop com.nitroxenon.terrarium')
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
-        time,sleep(15)
+        time,sleep(10)
         show_split = show.split()
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
@@ -566,10 +565,9 @@ class FireTV:
 
     def play_movie(self, app, show):
         self.turn_on()
-        self._adb.Shell('am force-stop com.nitroxenon.terrarium')
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
         show_split = show.split()
-        time.sleep(15)
+        time.sleep(10)
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
             self._adb.Shell('input text {0}'.format(x))
