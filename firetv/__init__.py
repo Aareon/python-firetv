@@ -552,7 +552,7 @@ class FireTV:
             self.enter()
             return None
         if int(season_number) >= 2 and int(season_number) <= 7:
-            for x in xrange(2,int(season_number)):
+            for x in xrange(1,int(season_number)):
                 self.right()
             self.enter()
         if int(season_number) == 8:
