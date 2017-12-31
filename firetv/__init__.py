@@ -581,6 +581,7 @@ class FireTV:
         self.right()
         self.enter()
         time.sleep(10)
+        show_split = show.split()
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
             self._adb.Shell('input text {0}'.format(x))
