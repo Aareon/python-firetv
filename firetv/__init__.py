@@ -538,14 +538,9 @@ class FireTV:
 
     def display_show_seasons(self, app, show):
         self.turn_on()
-        current_state = self.app_state(app)
-        if not current_state == "STATE_ON":
-            self.launch_app(app)
-            time.sleep(30)
-        #self.right()
-        #self.enter()
-        #time.sleep(2)
+        self._adb.Shell('am force-stop com.nitroxenon.terrarium')
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
+        time,sleep(5)
         show_split = show.split()
         for x in show_split:
             logging.error("AHHHHHH '%s'", x)
@@ -571,13 +566,7 @@ class FireTV:
 
     def play_movie(self, app, show):
         self.turn_on()
-        current_state = self.app_state(app)
-        if not current_state == "STATE_ON":
-            self.launch_app(app)
-            time.sleep(30)
-        #self.right()
-        #self.enter()
-        #time.sleep(2)
+        self._adb.Shell('am force-stop com.nitroxenon.terrarium')
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.SearchActivity')
         show_split = show.split()
         time.sleep(5)
@@ -606,8 +595,6 @@ class FireTV:
         time.sleep(20)
         self.down()
         self.enter()
-
-        
 
     def select_season_number(self, season_number):
         if int(season_number) == 1:
