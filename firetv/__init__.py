@@ -477,6 +477,7 @@ class FireTV:
         current_state = self.app_state(app)
         if not current_state == "STATE_ON":
             self.launch_app(app)
+            time.sleep(30)
         self.open_epg()
         self.reset_menu_bar()
 
@@ -536,7 +537,11 @@ class FireTV:
         previous_selection = selection
 
     def display_show_seasons(self, app, show):
-        self.launch_app(app)
+        self.turn_on()
+        current_state = self.app_state(app)
+        if not current_state == "STATE_ON":
+            self.launch_app(app)
+            time.sleep(30)
         #self.right()
         #self.enter()
         #time.sleep(2)
@@ -565,7 +570,11 @@ class FireTV:
         self._adb.Shell('am start -a android.intent.action.MAIN -e message What_Season_Would_You_Like? -n com.rja.utility/.ShowToast')
 
     def play_movie(self, app, show):
-        self.launch_app(app)
+        self.turn_on()
+        current_state = self.app_state(app)
+        if not current_state == "STATE_ON":
+            self.launch_app(app)
+            time.sleep(30)
         #self.right()
         #self.enter()
         #time.sleep(2)
