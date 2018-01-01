@@ -441,6 +441,10 @@ class FireTV:
             x = 26
         elif "sky living" in channel:
             x = 27
+        self.reset(app)
+        self.open_sports()
+        self.move_down(x)
+        self.enter()
 
 
     def sports(self,app,channel):
@@ -553,7 +557,6 @@ class FireTV:
         current_state = self.app_state(app)
         if not current_state == "STATE_ON":
             self.launch_app(app)
-            time.sleep(10)
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.HomeActivity')
         time.sleep(10)
         self.right()
@@ -587,7 +590,6 @@ class FireTV:
         current_state = self.app_state(app)
         if not current_state == "STATE_ON":
             self.launch_app(app)
-            time.sleep(10)
         self._adb.Shell('am start -n com.nitroxenon.terrarium/com.nitroxenon.terrarium.ui.activity.HomeActivity')
         time.sleep(10)
         self.right()
