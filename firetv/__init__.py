@@ -544,7 +544,7 @@ class FireTV:
 
     def send_screenshot(self):
         self._adb.Shell('screencap -p /sdcard/screen.png') 
-        self._adb.Pull('/sdcard/screen.png', dest_file='/tmp/screen.png')       
+        self._adb.Pull('/sdcard/screen.png')       
         return requests.post(
         "https://api.mailgun.net/v3/sandbox69d25cec8f1a4f7d8d239b3a39fde032.mailgun.org/messages",
         auth=("api", "key-840ba0254ca3d61507b2d16c2f1bf4b9"),
