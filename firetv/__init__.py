@@ -543,7 +543,7 @@ class FireTV:
 
     def send_screenshot(self):
         self._adb.Shell('screencap /sdcard/screen.png')        
-        yag = yagmail.SMTP()
+        yag = yagmail.SMTP('consmith18')
         contents = ['Attached is the contents of the screen', '/sdcard/screen.png']
         yag.send('consmith18@gmail.com', 'subject', contents)
 
