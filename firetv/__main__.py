@@ -210,7 +210,7 @@ def screencap(device_id):
     if device_id not in devices:
         abort(404)
 
-    success = devices[device_id].screencap()
+    success = devices[device_id].send_screenshot()
     return jsonify(success=success)
 
 @app.route('/devices/<device_id>/apps/<app_id>/action/<action>', methods=['GET'])
