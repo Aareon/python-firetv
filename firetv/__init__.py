@@ -10,6 +10,7 @@ import errno
 import logging
 import re
 import time
+import requests
 import yagmail
 from socket import error as socket_error
 from adb import adb_commands
