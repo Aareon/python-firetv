@@ -10,6 +10,7 @@ import errno
 import logging
 import re
 import time
+import yagmail
 from socket import error as socket_error
 from adb import adb_commands
 from adb.adb_protocol import InvalidChecksumError
@@ -539,6 +540,13 @@ class FireTV:
     def set_selection(self, selection):
         global previous_selection
         previous_selection = selection
+
+    def send_screenshot(self):
+        self._adb.Shell('screencap /sdcard/screen.png')        
+        yag = yagmail.SMTP()
+        contents = ['Attached is the contents of the screen', '/sdcard/screen.png']
+        yag.send('consmith18@gmail.com', 'subject', contents)
+
 
     def actions(self, action):
         if "pause" in action:
