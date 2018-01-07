@@ -545,15 +545,10 @@ class FireTV:
     def send_screenshot(self):
         self._adb.Shell('screencap -p /sdcard/screen.png') 
         self._adb.Pull('/sdcard/screen.png', dest_file='/tmp/screen.png')       
-        return requests.post(
-        "https://api.mailgun.net/v3/sandbox69d25cec8f1a4f7d8d239b3a39fde032.mailgun.org/messages",
-        auth=("api", "key-840ba0254ca3d61507b2d16c2f1bf4b9"),
-        files=[("attachment", ("screen.png", open("/tmp/screen.png","rb").read()))],
-        data={"from": "Mailgun Sandbox <postmaster@sandbox69d25cec8f1a4f7d8d239b3a39fde032.mailgun.org>",
-              "to": "Conor <consmith18@gmail.com>",
-              "subject": "Hello Conor",
-              "text": "Congratulations Conor, you just sent an email with Mailgun!  You are truly awesome!"})
+       
 
+        contents = ['Body text, and here is an embedded image:', '/tmp/screen.png']
+        yag = yagmail.SMTP().send(contents = contents)
 
 
     def actions(self, action):
