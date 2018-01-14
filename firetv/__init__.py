@@ -554,6 +554,11 @@ class FireTV:
               "subject": "Hello Conor",
               "text": "Congratulations Conor, you just sent an email with Mailgun!  You are truly awesome!"})
 
+    def change_link(self):
+        self.back()
+        self.down()
+        self.enter()
+
     def actions(self, action):
         if "pause" in action:
             self.media_play_pause()

@@ -213,6 +213,18 @@ def screencap(device_id):
     success = devices[device_id].send_screenshot()
     return jsonify(success=success)
 
+
+@app.route('/devices/<device_id>/apps/<app_id>/changelink', methods=['GET'])
+def change_link(device_id):
+    """ stops an app with corresponding package name"""
+    if not is_valid_device_id(device_id):
+        abort(403)
+    if device_id not in devices:
+        abort(404)
+
+    success = devices[device_id].change_link()
+    return jsonify(success=success)
+
 @app.route('/devices/<device_id>/apps/<app_id>/action/<action>', methods=['GET'])
 def action(device_id, app_id, action):
     """ stops an app with corresponding package name"""
