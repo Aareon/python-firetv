@@ -415,7 +415,7 @@ class FireTV:
 
     def uk(self,app,channel):
         x = 0
-        if "bbc 1" in channel:
+        if "BBC One" in channel:
             x = 1
         elif "bbc 2" in channel:
             x = 3
