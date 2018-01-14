@@ -215,7 +215,7 @@ def screencap(device_id):
 
 
 @app.route('/devices/<device_id>/apps/<app_id>/changelink', methods=['GET'])
-def change_link(device_id):
+def change_link(device_id, app_id):
     """ stops an app with corresponding package name"""
     if not is_valid_device_id(device_id):
         abort(403)
