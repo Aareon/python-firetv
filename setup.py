@@ -2,12 +2,12 @@ from setuptools import setup
 
 setup(
     name='firetv',
-    version='1.0.5',
+    version='1.0.5.1',
     description='Communicate with an Amazon Fire TV device via ADB over a network.',
-    url='https://github.com/happyleavesaoc/python-firetv/',
+    url='https://github.com/Aareon/python-firetv/',
     license='MIT',
-    author='happyleaves',
-    author_email='happyleaves.tfr@gmail.com',
+    author='happyleaves & Aareon',
+    author_email='happyleaves.tfr@gmail.com, aareon@died-in.space',
     packages=['firetv'],
     install_requires=['adb>=1.1.0'],
     extras_require={
