@@ -421,30 +421,20 @@ class FireTV:
         if self.previous_selection == 'Sports':
             self.up()
         if self.previous_selection == 'USA':
-            self.up()
-            self.up()
+            for _ in range(2):
+            	self.up()
         if self.previous_selection == 'Ireland':
-            self.up()
-            self.up()
-            self.up()
+            for _ in range(3):
+            	self.up()
         if self.previous_selection == 'UK':
-            self.up()
-            self.up()
-            self.up()
-            self.up()
+            for _ in range(4):
+            	self.up()
         if self.previous_selection == 'Movies':
-            self.up()
-            self.up()
-            self.up()
-            self.up()
-            self.up()
+            for _ in range(5):
+            	self.up()
         if self.previous_selection == 'Live':
-            self.up()
-            self.up()
-            self.up()
-            self.up()
-            self.up()
-            self.up()
+            for _ in range(6):
+            	self.up()
 
     @property
     def current_app(self):
