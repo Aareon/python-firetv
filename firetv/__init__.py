@@ -86,7 +86,6 @@ INTENT_LAUNCH = "android.intent.category.LAUNCHER"
 INTENT_HOME = "android.intent.category.HOME"
 
 SELECTION = "All"
-previous_selection = "All"
 
 
 class FireTV:
@@ -99,6 +98,8 @@ class FireTV:
         """
         self.host = host
         self._adb = None
+	self.previous_selection = 'All'
+	
         self.connect()
 
     def connect(self):
@@ -111,7 +112,7 @@ class FireTV:
             self._adb = adb_commands.AdbCommands.ConnectDevice(
                 serial=self.host)
         except socket_error as serr:
-            logging.warning("Couldn't connect to host: %s, error: %s", self.host, serr.strerror)
+            logging.warning("Couldn't connect to host: {0}, error: {1}".format(self.host, serr.strerror))
 
     @property
     def state(self):
@@ -372,7 +373,7 @@ class FireTV:
             return None
 
         cmd = 'monkey -p {} -c {} {}; echo $?'.format(pkg, intent, count)
-        logging.debug("Sending an intent %s to %s (count: %s)", intent, pkg, count)
+        logging.debug("Sending an intent {0} to {1} (count: {2})".format(intent, pkg, count))
 
         # adb shell outputs in weird format, so we cut it into lines,
         # separate the retcode and return info to the user
@@ -411,34 +412,33 @@ class FireTV:
         self.reset_menu_bar()
         self.down()
         self.enter()
-        global previous_selection
-        previous_selection = "Sports"
+        self.previous_selection = "Sports"
         
 
     def reset_menu_bar(self):
-        if previous_selection == 'All':
+        if self.previous_selection == 'All':
             return None
-        if previous_selection == 'Sports':
+        if self.previous_selection == 'Sports':
             self.up()
-        if previous_selection == 'USA':
-            self.up()
-            self.up()
-        if previous_selection == 'Ireland':
+        if self.previous_selection == 'USA':
             self.up()
             self.up()
-            self.up()
-        if previous_selection == 'UK':
+        if self.previous_selection == 'Ireland':
             self.up()
             self.up()
             self.up()
-            self.up()
-        if previous_selection == 'Movies':
+        if self.previous_selection == 'UK':
             self.up()
             self.up()
             self.up()
             self.up()
+        if self.previous_selection == 'Movies':
             self.up()
-        if previous_selection == 'Live':
+            self.up()
+            self.up()
+            self.up()
+            self.up()
+        if self.previous_selection == 'Live':
             self.up()
             self.up()
             self.up()
@@ -458,7 +458,7 @@ class FireTV:
             (pkg, activity) = matches.group('package', 'activity')
             return {"package": pkg, "activity": activity}
         else:
-            logging.warning("Couldn't get current app, reply was %s", current_focus)
+            logging.warning("Couldn't get current app, reply was {0}".format(current_focus))
             return None
 
     @property
@@ -515,7 +515,7 @@ class FireTV:
         """
         if not self._adb:
             return
-        if grep:
+        if grep is not None:
             return self._adb.Shell('dumpsys {0} | grep "{1}"'.format(service, grep))
         return self._adb.Shell('dumpsys {0}'.format(service))
 
