@@ -1,3 +1,9 @@
+# Compiled Python files
 *.pyc
+
+# Editor folders
 .idea/
+.vscode/
+
+# Eggs
 firetv.egg-info
