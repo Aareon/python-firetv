@@ -372,7 +372,7 @@ class FireTV:
         if not self._adb:
             return None
 
-        cmd = 'monkey -p {} -c {} {}; echo $?'.format(pkg, intent, count)
+        cmd = 'monkey -p {0} -c {1} {2}; echo $?'.format(pkg, intent, count)
         logging.debug("Sending an intent {0} to {1} (count: {2})".format(intent, pkg, count))
 
         # adb shell outputs in weird format, so we cut it into lines,
